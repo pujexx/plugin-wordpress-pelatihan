@@ -30,7 +30,8 @@ function tampil_form(){?>
 	</form>	
 <?php 
 	if(isset($_POST["submit"])){
-		print_r($_POST);
+		global $wpdb;
+$wpdb->insert( 'wp_pelatihan', array('nama'=> $_POST['nama'] , 'alamat'=> $_POST['alamat']));
 	}	
 }
 
