@@ -36,3 +36,17 @@ $wpdb->insert( 'wp_pelatihan', array('nama'=> $_POST['nama'] , 'alamat'=> $_POST
 }
 
 add_shortcode( 'test', 'tampil_form' );
+
+function menu_pendaftaran_admin(){
+	add_menu_page( 'Pendaftaran Pelatihan', 'Pendaftaran Pelatihan', 'edit_themes', 'pendaftaran-pelatihan', 'tampil_pendaftaran_admin');
+}
+
+function tampil_pendaftaran_admin(){
+	
+	global $wpdb;
+	$myrows = $wpdb->get_results( "SELECT * FROM wp_pelatihan" );
+	foreach($myrows as $row):
+		echo "nama : {$row->nama} alamat : {$row->alamat}<br>";
+	endforeach;
+}
+add_action('admin_menu' , 'menu_pendaftaran_admin');
