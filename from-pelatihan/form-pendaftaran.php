@@ -9,7 +9,7 @@
 
 function tampil_form(){?>
 
-	<form class="form-horizontal">
+	<form class="form-horizontal" method="post">
 		<div class="form-group">
 		    <label for="inputnama" class="col-lg-2 control-label">Nama</label>
 		    <div class="col-lg-10">
@@ -24,11 +24,14 @@ function tampil_form(){?>
   		</div>
   		<div class="form-group">
 		    <div class="col-lg-offset-2 col-lg-10">
-		      <button type="submit" class="btn btn-default">Daftar</button>
+		      <button type="submit" name="submit" class="btn btn-primary">Daftar</button>
 		    </div>
 		 </div>
 	</form>	
 <?php 
+	if(isset($_POST["submit"])){
+		print_r($_POST);
+	}	
 }
 
 add_shortcode( 'test', 'tampil_form' );
